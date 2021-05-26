@@ -19,14 +19,14 @@ const assertArrayEqual = function(original, comparison, expectedReturn) {
 
 const flatten = function(arr) {
   let newArr = [];
-  for (let i = 0; i < arr.length; i++) {
-    if (Array.isArray(arr[i])) {
-      for (let j = 0; j < arr[i].length; j++) {
-        newArr.push(arr[i][j]);
+  for (let item of arr) {
+    if (Array.isArray(item)) {
+      for (let elem of item) {
+        newArr.push(elem);
       }
     }
     else {
-      newArr.push(arr[i]);
+      newArr.push(item);
     }
   }
   return newArr;
