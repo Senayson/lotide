@@ -10,8 +10,8 @@ const eqArrays = function(array1, array2) {
   return true;
 };
 
-const assertArrayEqual = function(original, comparison, expectedReturn) {
-  if (eqArrays(original, comparison) === expectedReturn) {
+const assertArrayEqual = function(original, comparison) {
+  if (eqArrays(original, comparison)) {
     console.log(`✅✅✅Assertion passed: ${original} === ${comparison}`);
   } else {
     console.log(`🛑🛑🛑Assertion failed: ${original} !== ${comparison}`);
@@ -19,19 +19,23 @@ const assertArrayEqual = function(original, comparison, expectedReturn) {
 };
 
 const without = function(source, itemsToRemove) {
-  let newSource = source;
-  for(let i = 0; i < itemsToRemove.length; i++){
-   for(let j = 0; j < newSource.length; j++){
-    if(newSource[j] === itemsToRemove[i]){
-      newSource.splice(j,1);
+  let newSource = [];
+  for(let i = 0; i < source.length; i++){
+   for(let j = 0; j < itemsToRemove.length; j++){
+    if(source[i] === itemsToRemove[j]){
+      break;
+    }
+    if(j === itemsToRemove.length - 1) {
+      newSource.push(source[i]);
     }
    }
+   
   }
   return newSource;
 }
-// const source = [1,2,4,6]
-// const itemsToRemove = [2,4]
-// assertArrayEqual(without(source,itemsToRemove), [1,6], true);
+const source = [1,2,4,6]
+const itemsToRemove = [2,4]
+assertArrayEqual(without(source,itemsToRemove), [1,6]);
 
 const words = ["hello", "world", "lighthouse"];
 without(words, ["lighthouse"]); // no need to capture return value for this test case

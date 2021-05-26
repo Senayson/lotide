@@ -10,13 +10,13 @@ const eqArrays = function(array1, array2) {
   return true;
 };
 
-const assertArrayEqual = function(original, comparison, expectedReturn) {
-  if (eqArrays(original, comparison) === expectedReturn) {
+const assertArrayEqual = function(original, comparison) {
+  if (eqArrays(original, comparison)) {
     console.log(`✅✅✅Assertion passed: ${original} === ${comparison}`);
   } else {
     console.log(`🛑🛑🛑Assertion failed: ${original} !== ${comparison}`);
   }
 };
-assertArrayEqual([1,2,3],[1,2,4],false);
-assertArrayEqual([1,2,4], [1,2,4], true);
-assertArrayEqual(['hello', 'goodbye'], ['hello', 'goodbye'], true);
+assertArrayEqual([1,2,3],[1,2,4]);
+assertArrayEqual([1,2,4], [1,2,4]);
+assertArrayEqual(['hello', 'goodbye'], ['hello', 'goodbye']);
